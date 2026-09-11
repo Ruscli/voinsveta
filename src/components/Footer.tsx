@@ -55,6 +55,14 @@ export function Footer() {
                 Галерея
               </a>
             </li>
+            <li>
+              <a
+                href="#reviews"
+                className="text-sm font-semibold text-paper-100/70 transition-colors hover:text-gold-300"
+              >
+                Отзывы
+              </a>
+            </li>
           </ul>
         </nav>
 

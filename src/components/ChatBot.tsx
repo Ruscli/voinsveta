@@ -12,6 +12,7 @@ import {
   CHAT_RULES,
   PHONE_HREF,
   SCHOOL_NAME,
+  waLink,
   type ChatChip,
 } from "../content";
 import { useLead } from "../lead";
@@ -117,6 +118,16 @@ export function ChatBot() {
       window.location.href = PHONE_HREF;
       return;
     }
+    if (chip.action === "wa") {
+      window.open(
+        waLink(
+          "Здравствуйте! Пишу с сайта школы «Воин Света». Хочу узнать про занятия и записать ребёнка на бесплатную тренировку.",
+        ),
+        "_blank",
+        "noopener,noreferrer",
+      );
+      return;
+    }
     /* form: к форме заявки, чат сворачиваем */
     setIsOpen(false);
     open({});
@@ -149,7 +160,7 @@ export function ChatBot() {
         <section
           role="dialog"
           aria-label={`Чат с администратором школы «${SCHOOL_NAME}»`}
-          className="fixed right-4 bottom-20 z-[60] flex h-[min(560px,72dvh)] w-[min(calc(100vw-2rem),384px)] flex-col overflow-hidden rounded-3xl border border-white/15 bg-ink-900 shadow-2xl shadow-black/60 sm:right-6 sm:bottom-24"
+          className="fixed right-4 bottom-[156px] z-[60] flex h-[min(560px,66dvh)] w-[min(calc(100vw-2rem),384px)] flex-col overflow-hidden rounded-3xl border border-white/15 bg-ink-900 shadow-2xl shadow-black/60 sm:right-6 lg:bottom-24 lg:h-[min(560px,72dvh)]"
         >
           {/* Шапка */}
           <header className="flex items-center gap-3 border-b border-white/10 bg-ink-850 px-4 py-3.5">
@@ -215,7 +226,9 @@ export function ChatBot() {
                           className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-colors ${
                             chip.action === "form"
                               ? "border-cinnabar-400/50 bg-cinnabar-500/15 text-cinnabar-400 hover:bg-cinnabar-500/25"
-                              : "border-white/15 bg-white/5 text-paper-100/85 hover:border-gold-500/40 hover:text-gold-300"
+                              : chip.action === "wa"
+                                ? "border-emerald-400/50 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25"
+                                : "border-white/15 bg-white/5 text-paper-100/85 hover:border-gold-500/40 hover:text-gold-300"
                           }`}
                         >
                           {chip.label}

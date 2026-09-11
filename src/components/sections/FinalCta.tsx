@@ -30,9 +30,24 @@ export function FinalCta() {
                   </span>
                 </h2>
                 <p className="mt-5 max-w-md text-base leading-relaxed text-paper-100/70">
-                  Оставьте заявку — перезвоним, ответим на вопросы и подберём
-                  группу по возрасту и уровню ребёнка.
+                  Оставьте телефон — тренер Александр сам перезвонит, ответит
+                  на вопросы и подберёт группу по возрасту и уровню ребёнка.
                 </p>
+
+                <ol className="mt-6 space-y-2.5 text-sm">
+                  {[
+                    "Оставляете номер — это займёт 20 секунд",
+                    "Тренер Александр перезванивает в течение дня",
+                    "Приходите на бесплатную тренировку в удобном зале",
+                  ].map((step, i) => (
+                    <li key={step} className="flex items-center gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-gold-500/40 bg-gold-500/10 text-[11px] font-extrabold text-gold-300">
+                        {i + 1}
+                      </span>
+                      <span className="text-paper-100/75">{step}</span>
+                    </li>
+                  ))}
+                </ol>
 
                 <div className="mt-7 flex flex-wrap gap-3">
                   <a href={PHONE_HREF} className="btn btn-gold">
