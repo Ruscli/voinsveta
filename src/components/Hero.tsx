@@ -65,7 +65,9 @@ export function Hero() {
               </a>
             </div>
             <p className="mt-3.5 text-xs font-semibold text-paper-100/50">
-              Бесплатно и без обязательств · просто приходите и попробуйте
+              Первая тренировка бесплатно · идёт набор в новые группы:{" "}
+              <span className="text-gold-300">от 3 900 ₽/мес</span>{" "}
+              <s className="opacity-60">вместо от 4 900 ₽/мес</s>
             </p>
           </Reveal>
 

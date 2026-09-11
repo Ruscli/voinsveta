@@ -46,7 +46,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-2 text-sm font-semibold text-paper-100/75 transition-colors hover:bg-white/5 hover:text-gold-300"
+              className="rounded-full px-2.5 py-2 text-[13px] font-semibold text-paper-100/75 transition-colors hover:bg-white/5 hover:text-gold-300 xl:px-3 xl:text-sm"
             >
               {link.label}
             </a>
@@ -56,7 +56,7 @@ export function Header() {
         <div className="hidden items-center gap-4 lg:flex">
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center gap-2 text-sm font-bold text-paper-100/90 transition-colors hover:text-gold-300"
+            className="hidden items-center gap-2 text-sm font-bold text-paper-100/90 transition-colors hover:text-gold-300 xl:inline-flex"
           >
             <Icon name="phone" className="h-4 w-4 text-gold-400" />
             {PHONE_DISPLAY}

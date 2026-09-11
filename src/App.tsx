@@ -1,10 +1,12 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Footer } from "./components/Footer";
+import { ChatBot } from "./components/ChatBot";
 import { LeadProvider } from "./lead";
 import { Benefits } from "./components/sections/Benefits";
 import { Program } from "./components/sections/Program";
 import { Journey } from "./components/sections/Journey";
+import { Pricing } from "./components/sections/Pricing";
 import { Schedule } from "./components/sections/Schedule";
 import { Coaches } from "./components/sections/Coaches";
 import { Tradition } from "./components/sections/Tradition";
@@ -22,6 +24,7 @@ export default function App() {
         <Benefits />
         <Program />
         <Journey />
+        <Pricing />
         <Schedule />
         <Coaches />
         <Tradition />
@@ -31,6 +34,7 @@ export default function App() {
         <FinalCta />
       </main>
       <Footer />
+      <ChatBot />
     </LeadProvider>
   );
 }

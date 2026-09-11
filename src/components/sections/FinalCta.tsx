@@ -54,6 +54,11 @@ export function FinalCta() {
                     <Icon name="clock" className="h-4 w-4 shrink-0 text-gold-400" />
                     Вт–Пт с 15:00 · Пн и Чт с 17:00
                   </li>
+                  <li className="flex items-center gap-2.5">
+                    <Icon name="check" className="h-4 w-4 shrink-0 text-gold-400" />
+                    На звонки отвечает тренер Александр — решим все вопросы
+                    напрямую
+                  </li>
                 </ul>
               </div>
 

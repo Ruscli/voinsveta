@@ -10,9 +10,9 @@ import { Icon } from "./Icons";
 type Status = "idle" | "sending" | "success";
 
 interface FormState {
-  parentName: string;
   phone: string;
-  age: string;
+  parentName: string;
+  email: string;
   location: LocationId;
   comment: string;
 }
@@ -20,9 +20,9 @@ interface FormState {
 type Errors = Partial<Record<keyof FormState, string>>;
 
 const DEFAULT_FORM: FormState = {
-  parentName: "",
   phone: "",
-  age: "",
+  parentName: "",
+  email: "",
   location: "unknown",
   comment: "",
 };
@@ -44,7 +44,11 @@ export function LeadForm({
 
   /* Если пользователь нажал «Записаться в эту группу» — подставляем локацию */
   useEffect(() => {
-    setForm((f) => ({ ...f, location: initialLocation, comment: initialComment }));
+    setForm((f) => ({
+      ...f,
+      location: initialLocation,
+      comment: initialComment,
+    }));
   }, [initialLocation, initialComment]);
 
   const setField = (name: keyof FormState, value: string) => {
@@ -55,18 +59,15 @@ export function LeadForm({
   const validate = (): boolean => {
     const next: Errors = {};
 
-    if (form.parentName.trim().length < 2) {
-      next.parentName = "Укажите, как к вам обращаться";
-    }
-
+    /* Телефон — единственное обязательное поле */
     const digits = form.phone.replace(/\D/g, "");
     if (digits.length < 10 || digits.length > 11) {
       next.phone = "Введите номер полностью, например +7 900 000-00-00";
     }
 
-    const age = Number.parseInt(form.age, 10);
-    if (!form.age || Number.isNaN(age) || age < 5 || age > 20) {
-      next.age = "Возраст ребёнка — от 5 до 20";
+    /* Имя и email — по желанию, но если заполнены, проверяем формат */
+    if (form.email.trim() && !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+      next.email = "Проверьте адрес почты";
     }
 
     setErrors(next);
@@ -118,13 +119,14 @@ export function LeadForm({
             className="font-bold text-gold-300 hover:text-gold-200"
           >
             {PHONE_DISPLAY}
-          </a>
+          </a>{" "}
+          — на звонки отвечает тренер Александр.
         </p>
         <button
           type="button"
           className="btn btn-ghost mt-6 px-5 py-2.5 text-xs"
           onClick={() => {
-            setForm(DEFAULT_FORM);
+            setForm({ ...DEFAULT_FORM, location: initialLocation });
             setErrors({});
             setStatus("idle");
           }}
@@ -142,34 +144,16 @@ export function LeadForm({
       className="rounded-3xl border border-white/10 bg-ink-950/60 p-6 sm:p-7"
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="field-label" htmlFor="lead-name">
-            Ваше имя
-          </label>
-          <input
-            id="lead-name"
-            type="text"
-            autoComplete="name"
-            className="field"
-            placeholder="Например, Анна"
-            value={form.parentName}
-            onChange={(e) => setField("parentName", e.target.value)}
-            aria-invalid={Boolean(errors.parentName)}
-          />
-          {errors.parentName ? (
-            <p className="field-error">{errors.parentName}</p>
-          ) : null}
-        </div>
-
-        <div>
+        <div className="sm:col-span-2">
           <label className="field-label" htmlFor="lead-phone">
-            Телефон
+            Телефон <span className="text-cinnabar-400">*</span>
           </label>
           <input
             id="lead-phone"
             type="tel"
             inputMode="tel"
             autoComplete="tel"
+            required
             className="field"
             placeholder="+7 900 000-00-00"
             value={form.phone}
@@ -180,27 +164,43 @@ export function LeadForm({
         </div>
 
         <div>
-          <label className="field-label" htmlFor="lead-age">
-            Возраст ребёнка
+          <label className="field-label" htmlFor="lead-name">
+            Ваше имя{" "}
+            <span className="normal-case opacity-60">(по желанию)</span>
           </label>
           <input
-            id="lead-age"
-            type="number"
-            inputMode="numeric"
-            min={5}
-            max={20}
+            id="lead-name"
+            type="text"
+            autoComplete="name"
             className="field"
-            placeholder="Например, 9"
-            value={form.age}
-            onChange={(e) => setField("age", e.target.value)}
-            aria-invalid={Boolean(errors.age)}
+            placeholder="Например, Анна"
+            value={form.parentName}
+            onChange={(e) => setField("parentName", e.target.value)}
           />
-          {errors.age ? <p className="field-error">{errors.age}</p> : null}
         </div>
 
         <div>
+          <label className="field-label" htmlFor="lead-email">
+            Email{" "}
+            <span className="normal-case opacity-60">(по желанию)</span>
+          </label>
+          <input
+            id="lead-email"
+            type="email"
+            autoComplete="email"
+            className="field"
+            placeholder="you@mail.ru"
+            value={form.email}
+            onChange={(e) => setField("email", e.target.value)}
+            aria-invalid={Boolean(errors.email)}
+          />
+          {errors.email ? <p className="field-error">{errors.email}</p> : null}
+        </div>
+
+        <div className="sm:col-span-2">
           <label className="field-label" htmlFor="lead-location">
-            Локация
+            Локация{" "}
+            <span className="normal-case opacity-60">(по желанию)</span>
           </label>
           <select
             id="lead-location"
@@ -223,9 +223,9 @@ export function LeadForm({
           </label>
           <textarea
             id="lead-comment"
-            rows={3}
+            rows={2}
             className="field resize-none"
-            placeholder="Опыт спорта, удобное время, вопросы…"
+            placeholder="Возраст ребёнка, удобное время, вопросы…"
             value={form.comment}
             onChange={(e) => setField("comment", e.target.value)}
           />
@@ -237,7 +237,9 @@ export function LeadForm({
         disabled={status === "sending"}
         className="btn btn-gold btn-lg mt-5 w-full disabled:cursor-wait disabled:opacity-70"
       >
-        {status === "sending" ? "Отправляем…" : "Записаться на бесплатную тренировку"}
+        {status === "sending"
+          ? "Отправляем…"
+          : "Записаться на бесплатную тренировку"}
         {status !== "sending" ? <Icon name="send" className="h-4 w-4" /> : null}
       </button>
 
