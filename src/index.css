@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Unbounded", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Графитовая база */
+  --color-ink-950: #08080b;
+  --color-ink-900: #0d0d11;
+  --color-ink-850: #121218;
+  --color-ink-800: #181820;
+  --color-ink-700: #22222c;
+  --color-ink-600: #2f2f3b;
+
+  /* Тёплый белый (бумага) */
+  --color-paper-50: #f8f3ea;
+  --color-paper-100: #efe8d9;
+  --color-paper-300: #d9cfba;
+
+  /* Золото */
+  --color-gold-200: #f3dda8;
+  --color-gold-300: #eccf8d;
+  --color-gold-400: #dfb566;
+  --color-gold-500: #cf9f4b;
+  --color-gold-600: #b0812f;
+
+  /* Киноварь (китайский красный) */
+  --color-cinnabar-400: #d8604a;
+  --color-cinnabar-500: #c2432d;
+  --color-cinnabar-600: #a33320;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-paper-50 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(223, 181, 102, 0.35);
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Кнопки */
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-wide transition-all duration-200 select-none;
+  }
+  .btn:focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-400;
+  }
+  .btn-lg {
+    @apply px-7 py-4 text-[15px];
+  }
+  .btn-gold {
+    @apply bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 text-ink-950 shadow-[0_12px_32px_-12px_rgba(207,159,75,0.55)] hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-14px_rgba(207,159,75,0.65)] active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply border border-white/15 bg-white/[0.04] text-paper-50 hover:border-gold-400/50 hover:text-gold-300;
+  }
+
+  /* Карточки */
+  .card {
+    @apply rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300;
+  }
+  .card-hover {
+    @apply hover:border-gold-500/30 hover:bg-white/[0.05];
+  }
+
+  /* Чипы / бейджи */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold text-paper-100;
+  }
+
+  /* Надзаголовок секции */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[11px] font-extrabold tracking-[0.28em] text-gold-400 uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-2 w-2 rotate-45 rounded-[2px] bg-cinnabar-500;
+  }
+
+  /* Появление при скролле */
+  .reveal {
+    @apply translate-y-6 opacity-0 transition-[opacity,transform] duration-700 ease-out;
+  }
+  .reveal.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  /* Поля формы */
+  .field-label {
+    @apply mb-1.5 block text-xs font-bold tracking-wider text-paper-100/60 uppercase;
+  }
+  .field {
+    @apply w-full rounded-2xl border border-white/10 bg-ink-900/70 px-4 py-3 text-[15px] text-paper-50 transition-colors placeholder:text-paper-100/35 focus:border-gold-400/60 focus:outline-none;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs font-semibold text-cinnabar-400;
+  }
+}
+
+/* Анимации */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(6deg);
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pop-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 46s linear infinite;
+}
+.animate-pop-in {
+  animation: pop-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Уважение к reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float-soft,
+  .animate-spin-slow,
+  .animate-pop-in {
+    animation: none;
+  }
+  .btn,
+  .card {
+    transition: none;
+  }
+}
