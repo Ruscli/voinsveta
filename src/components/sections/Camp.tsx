@@ -80,7 +80,7 @@ export function Camp() {
                 </button>
                 <a className="btn btn-ghost w-full" href={CAMP_PHONE_HREF}>
                   <Icon name="phone" className="h-4 w-4 text-gold-400" />
-                  {CAMP_PHONE_DISPLAY} · Telegram
+                  {CAMP_PHONE_DISPLAY} — телефон сборов
                 </a>
               </div>
             </article>

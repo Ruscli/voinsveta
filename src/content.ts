@@ -5,13 +5,21 @@
 
 import type { IconName } from "./components/Icons";
 
+/**
+ * Префикс для публичных ассетов с учётом base-пути деплоя.
+ * Локально BASE_URL = "/", на GitHub Pages — "/voin-sveta/".
+ * Используйте asset("images/...") вместо "/images/..." в JS/TSX.
+ */
+export const asset = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 export const SCHOOL_NAME = "Воин Света";
 export const PHONE_DISPLAY = "+7 963 670 06 40";
 export const PHONE_HREF = "tel:+79636700640";
 export const EMAIL = "lubov.mir@mail.ru";
 export const MAILTO = `mailto:${EMAIL}`;
 
-/* Отдельный контакт для летних сборов (Telegram) */
+/* Телефон летних сборов (мессенджеры в РФ блокируются — только звонки) */
 export const CAMP_PHONE_DISPLAY = "+7 910 535 32 40";
 export const CAMP_PHONE_HREF = "tel:+79105353240";
 
@@ -302,43 +310,43 @@ export interface GalleryPhoto {
  */
 export const GALLERY: GalleryPhoto[] = [
   {
-    src: "/images/china/monks-demo.jpg",
+    src: asset("images/china/monks-demo.jpg"),
     alt: "Демонстрация шаолиньского ушу монахами в монастыре, горы Суньшань",
   },
   {
-    src: "/images/china/master-with-kids.jpg",
+    src: asset("images/china/master-with-kids.jpg"),
     alt: "Александр Миронов с учениками школы мастера Ши Янчена, Китай",
   },
   {
-    src: "/images/china/kids-certificate.jpg",
+    src: asset("images/china/kids-certificate.jpg"),
     alt: "Юные ученики с аттестатом школы шаолиньского кунг-фу, Дэнфэн",
   },
   {
-    src: "/images/china/group-diplomas-school.jpg",
+    src: asset("images/china/group-diplomas-school.jpg"),
     alt: "Группа школы с наставниками после аттестации в школе Ши Янчена",
   },
   {
-    src: "/images/china/stances-mountains.jpg",
+    src: asset("images/china/stances-mountains.jpg"),
     alt: "Тренировка с традиционным оружием на древней стене, Китай",
   },
   {
-    src: "/images/china/with-mentor-monk.jpg",
+    src: asset("images/china/with-mentor-monk.jpg"),
     alt: "С наставником школы шаолиньского кунг-фу, горы Суньшань",
   },
   {
-    src: "/images/china/group-diplomas.jpg",
+    src: asset("images/china/group-diplomas.jpg"),
     alt: "Дипломы школы мастера Ши Янчена — передача традиции от учителя к ученику",
   },
   {
-    src: "/images/china/mironov-certificate.jpg",
+    src: asset("images/china/mironov-certificate.jpg"),
     alt: "Аттестат старшего тренера Александра Миронова из школы мастера Ши Янчена",
   },
   {
-    src: "/images/china/shaolin-gate.jpg",
+    src: asset("images/china/shaolin-gate.jpg"),
     alt: "Шаолинь — «Святая земля кунг-фу»: ворота монастыря",
   },
   {
-    src: "/images/china/songshan-mountains.jpg",
+    src: asset("images/china/songshan-mountains.jpg"),
     alt: "Горы Суньшань — родина шаолиньского ушу",
   },
 ];

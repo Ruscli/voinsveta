@@ -1,4 +1,4 @@
-import { MASTER_FACTS } from "../../content";
+import { MASTER_FACTS, asset } from "../../content";
 import { Icon } from "../Icons";
 import { Reveal } from "../ui";
 
@@ -82,7 +82,7 @@ export function Tradition() {
             </ul>
             <figure className="mt-6">
               <img
-                src="/images/china/mironov-certificate.jpg"
+                src={asset("images/china/mironov-certificate.jpg")}
                 alt="Аттестат Александра Миронова из школы мастера Ши Янчена (Дэнфэн, горы Суньшань)"
                 loading="lazy"
                 decoding="async"

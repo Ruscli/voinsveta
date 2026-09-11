@@ -1,3 +1,4 @@
+import { asset } from "../content";
 import { Icon } from "./Icons";
 import { Reveal } from "./ui";
 
@@ -110,7 +111,7 @@ export function Hero() {
 
             <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/50">
               <img
-                src="/images/china/monks-demo.jpg"
+                src={asset("images/china/monks-demo.jpg")}
                 alt="Демонстрация шаолиньского ушу монахами в монастыре Шаолинь"
                 className="aspect-[16/10] w-full object-cover"
                 loading="eager"
