@@ -47,6 +47,14 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="#gallery"
+                className="text-sm font-semibold text-paper-100/70 transition-colors hover:text-gold-300"
+              >
+                Галерея
+              </a>
+            </li>
           </ul>
         </nav>
 
@@ -94,13 +102,21 @@ export function Footer() {
             © {year} Школа шаолиньского ушу «{SCHOOL_NAME}». Все права
             защищены.
           </p>
-          <a
-            href="#top"
-            className="inline-flex items-center gap-1.5 font-bold text-paper-100/60 transition-colors hover:text-gold-300"
-          >
-            Наверх
-            <Icon name="chevron" className="h-3.5 w-3.5 rotate-180" />
-          </a>
+          <div className="flex items-center gap-5">
+            <a
+              href="privacy.html"
+              className="transition-colors hover:text-gold-300"
+            >
+              Политика конфиденциальности
+            </a>
+            <a
+              href="#top"
+              className="inline-flex items-center gap-1.5 font-bold text-paper-100/60 transition-colors hover:text-gold-300"
+            >
+              Наверх
+              <Icon name="chevron" className="h-3.5 w-3.5 rotate-180" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

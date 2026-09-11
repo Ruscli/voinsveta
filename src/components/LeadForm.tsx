@@ -244,8 +244,14 @@ export function LeadForm({
       </button>
 
       <p className="mt-3.5 text-center text-xs leading-relaxed text-paper-100/45">
-        Отправляя форму, вы соглашаетесь на обработку персональных данных.
-        Контакты третьим лицам не передаются.
+        Отправляя форму, вы соглашаетесь на{" "}
+        <a
+          href="privacy.html"
+          className="underline decoration-gold-500/50 underline-offset-2 hover:text-gold-300"
+        >
+          обработку персональных данных
+        </a>
+        . Контакты третьим лицам не передаются.
       </p>
     </form>
   );

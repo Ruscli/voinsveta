@@ -9,6 +9,7 @@ import { Journey } from "./components/sections/Journey";
 import { Pricing } from "./components/sections/Pricing";
 import { Schedule } from "./components/sections/Schedule";
 import { Coaches } from "./components/sections/Coaches";
+import { Gallery } from "./components/sections/Gallery";
 import { Tradition } from "./components/sections/Tradition";
 import { Camp } from "./components/sections/Camp";
 import { Parents } from "./components/sections/Parents";
@@ -27,6 +28,7 @@ export default function App() {
         <Pricing />
         <Schedule />
         <Coaches />
+        <Gallery />
         <Tradition />
         <Camp />
         <Parents />
