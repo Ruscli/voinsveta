@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://swqmqwkhm9-byte.github.io/voin-sveta/sitemap.xml
