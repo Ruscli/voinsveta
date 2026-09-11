@@ -110,9 +110,9 @@ export function Hero() {
 
             <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/50">
               <img
-                src="/images/hero.jpg"
-                alt="Юный спортсмен с посохом на фоне шаолиньского храма на закате"
-                className="aspect-[4/5] w-full object-cover"
+                src="/images/china/monks-demo.jpg"
+                alt="Демонстрация шаолиньского ушу монахами в монастыре Шаолинь"
+                className="aspect-[16/10] w-full object-cover"
                 loading="eager"
                 decoding="async"
               />
@@ -130,6 +130,15 @@ export function Hero() {
                 </a>
               </figcaption>
             </figure>
+            <p className="mt-3 text-center text-xs text-paper-100/50">
+              Фото из поездок школы в монастырь Шаолинь — смотрите{" "}
+              <a
+                href="#gallery"
+                className="font-bold text-gold-300 hover:text-gold-200"
+              >
+                галерею
+              </a>
+            </p>
 
             <div
               aria-hidden="true"

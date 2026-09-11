@@ -80,6 +80,20 @@ export function Tradition() {
                 </li>
               ))}
             </ul>
+            <figure className="mt-6">
+              <img
+                src="/images/china/mironov-certificate.jpg"
+                alt="Аттестат Александра Миронова из школы мастера Ши Янчена (Дэнфэн, горы Суньшань)"
+                loading="lazy"
+                decoding="async"
+                className="w-full rounded-2xl border border-white/10 shadow-lg shadow-black/40"
+              />
+              <figcaption className="mt-2 text-xs leading-relaxed text-paper-100/50">
+                Аттестат старшего тренера Александра Миронова из школы мастера
+                Ши Янчена (Дэнфэн, горы Суньшань) — подтверждение прямой линии
+                передачи традиции.
+              </figcaption>
+            </figure>
           </div>
         </Reveal>
       </div>

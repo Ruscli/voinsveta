@@ -52,7 +52,8 @@ src/
                              Coaches, Tradition, Camp, Parents, Faq, FinalCta
 scripts/postbuild.cjs      — 404.html + .nojekyll для GitHub Pages
 public/
-  images/hero.jpg          — атмосферное изображение (замените на реальное фото)
+  images/china/            — РЕАЛЬНЫЕ фото: поездки в школу Ши Янчена и монастырь Шаолинь
+  privacy.html             — политика конфиденциальности (152-ФЗ)
   favicon.svg              — энсо + печать (логотип-заглушка)
   robots.txt  sitemap.xml  .nojekyll
 .github/workflows/deploy-pages.yml
