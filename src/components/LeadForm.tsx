@@ -94,10 +94,10 @@ export function LeadForm({
   const saveLocally = (lead: FormState) => {
     try {
       const leads = JSON.parse(
-        window.localStorage.getItem("voin-sveta-leads") ?? "[]",
+        window.localStorage.getItem("voinsveta-leads") ?? "[]",
       ) as unknown[];
       leads.push({ ...lead, createdAt: new Date().toISOString() });
-      window.localStorage.setItem("voin-sveta-leads", JSON.stringify(leads));
+      window.localStorage.setItem("voinsveta-leads", JSON.stringify(leads));
     } catch {
       /* приватный режим браузера — не критично */
     }

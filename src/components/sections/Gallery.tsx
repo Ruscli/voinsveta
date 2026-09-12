@@ -38,8 +38,8 @@ export function Gallery() {
       <div className="container-x">
         <SectionHeading
           eyebrow="Галерея"
-          title="Как проходят тренировки"
-          lead="Атмосфера зала, техника, ступени и летние сборы — взгляните, чем живёт школа."
+          title="Школа в поездках: Шаолинь и Китай"
+          lead="Фотографии из поездок школы в монастырь Шаолинь и школу мастера Ши Янчена — традиция, которую мы передаём ученикам."
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

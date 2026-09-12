@@ -7,7 +7,7 @@ import type { IconName } from "./components/Icons";
 
 /**
  * Префикс для публичных ассетов с учётом base-пути деплоя.
- * Локально BASE_URL = "/", на GitHub Pages — "/voin-sveta/".
+ * Локально BASE_URL = "/", на GitHub Pages — "/voinsveta/".
  * Используйте asset("images/...") вместо "/images/..." в JS/TSX.
  */
 export const asset = (path: string) =>

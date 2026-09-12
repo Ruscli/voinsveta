@@ -21,6 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Автоматически включает GitHub Pages (источник — GitHub Actions),
+          # если это ещё не сделано вручную в Settings → Pages.
+          enablement: true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
