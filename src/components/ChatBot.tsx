@@ -141,7 +141,7 @@ export function ChatBot() {
         onClick={() => setIsOpen((v) => !v)}
         aria-expanded={isOpen}
         aria-label={isOpen ? "Закрыть чат с администратором" : "Открыть чат с администратором"}
-        className="fixed right-4 bottom-4 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 text-ink-950 shadow-[0_14px_36px_-10px_rgba(207,159,75,0.65)] transition-transform hover:scale-105 active:scale-95 sm:right-6 sm:bottom-6"
+        className="fixed right-4 bottom-[92px] z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-500 text-ink-950 shadow-[0_14px_36px_-10px_rgba(207,159,75,0.65)] transition-transform hover:scale-105 active:scale-95 sm:right-6 lg:bottom-6"
       >
         <Icon name={isOpen ? "close" : "chat"} className="h-6 w-6" />
         {!isOpen && (

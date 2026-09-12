@@ -20,7 +20,7 @@ npm install      # установить зависимости
 npm run dev      # дев-сервер → http://localhost:5173
 npm run build    # прод-сборка в dist/ (tsc + vite build)
 npm run preview  # локальный просмотр прод-сборки → http://localhost:4173
-npm run build:pages  # сборка для GitHub Pages (base=/voin-sveta/, 404.html, .nojekyll)
+npm run build:pages  # сборка для GitHub Pages (base=/voinsveta/, 404.html, .nojekyll)
 ```
 
 ## Деплой на GitHub Pages
@@ -28,12 +28,13 @@ npm run build:pages  # сборка для GitHub Pages (base=/voin-sveta/, 404.
 Деплой автоматизирован через GitHub Actions (`.github/workflows/deploy-pages.yml`):
 
 1. При каждом push в `main` сайт собирается и публикуется на
-   `https://<владелец>.github.io/voin-sveta/` (base подставляется автоматически).
-2. Один раз включите Pages: **Settings → Pages → Source: GitHub Actions**
-   (или выполните `gh api repos/<владелец>/voin-sveta/pages -X POST -f build_type=workflow`).
+   `https://ruscli.github.io/voinsveta/` (base подставляется автоматически
+   из имени репозитория).
+2. Pages включаются автоматически шагом `configure-pages` в workflow.
+   Запасной вариант вручную: **Settings → Pages → Source: GitHub Actions**.
 3. Для ручного запуска: вкладка **Actions → Deploy to GitHub Pages → Run workflow**.
 
-Локальная проверка Pages-сборки: `npm run build:pages && npx vite preview --base=/voin-sveta/`.
+Локальная проверка Pages-сборки: `npm run build:pages && npx vite preview --base=/voinsveta/`.
 
 Если переименуете репозиторий или заведёте свой домен — обновите canonical/og:url
 в `index.html` и ссылки в `public/sitemap.xml`, `public/robots.txt`.
@@ -108,16 +109,17 @@ public/
 3. **SMS и письмо** — резервные кнопки рядом (открывают приложения телефона
    с готовым текстом).
 4. **Резервная копия** — заявка также сохраняется в браузере клиента
-   (`localStorage`, ключ `voin-sveta-leads`).
+   (`localStorage`, ключ `voinsveta-leads`).
 
 Сменить почту получения — константа `LEAD_EMAIL` в `src/content.ts`
 (после смены активируйте новый адрес в FormSubmit).
 
 ## Замены перед запуском «в бой»
 
-1. **Фото**: замените `public/images/hero.jpg` на реальную фотографию зала /
-   тренировки (согласие получено). Аватары тренеров —
-   `src/components/sections/Coaches.tsx`.
+1. **Фото**: в hero и галерее сейчас реальные фото поездок в Китай
+   (`public/images/china/`). Добавьте фото тренировок в Солнечногорске/Голубом
+   (положите файлы в `public/images/` и допишите `GALLERY` в `src/content.ts`).
+   Аватары тренеров — `src/components/sections/Coaches.tsx`.
 2. **Цена**: акция «от 3 900 ₽/мес» помечена как временная — не забудьте
    обновить/снять её после набора (`PRICE_OLD`, `PRICE_NEW` в `src/content.ts`
    и текст FAQ в `index.html`).
